@@ -5,5 +5,7 @@ package q01_basic.question01;
  */
 class Member {
 	//TODO ここから実装する
-
+	public static void main(String[] args) {
+		System.out.println("test");
+	}
 }
