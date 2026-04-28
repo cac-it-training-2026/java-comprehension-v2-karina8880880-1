@@ -7,7 +7,7 @@ public class SystemMain02 {
 		//TODO ここから実装する
 		ConsoleReader cr = new ConsoleReader();
 		Member member = new Member();
-		member.getInstance(0, null, null, 0, 0);
+		member.getInstance(0, null, null, 0, 0);//
 	}
 
 }
