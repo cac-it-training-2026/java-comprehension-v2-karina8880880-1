@@ -1,4 +1,4 @@
-package q02_advanced.question02;
+package q02_advanced.question03;
 
 public class Coupon {
 	private int id;

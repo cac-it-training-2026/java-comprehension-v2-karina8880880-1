@@ -1,4 +1,4 @@
-package q02_advanced.question01;
+package q02_advanced.question03;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +32,7 @@ class Member {
 		this.age = age;
 		this.rank = rank;
 
-		Coupon coupon1 = new Coupon(1, 0.5, "最初の特典");
-		Coupon coupon2 = new Coupon(2, 0.25, "今月の特典");
 		List<Coupon> coupons = new ArrayList<Coupon>();
-		coupons.add(coupon1);
-		coupons.add(coupon2);
 		this.coupons = coupons;
 	}
 
@@ -86,6 +82,14 @@ class Member {
 
 	public void setCoupons(List<Coupon> coupons) {
 		this.coupons = coupons;
+	}
+
+	public static Member getInstance(int id, String password, String name, int age, int rank) {
+		Member member = new Member(id, password, name, age, rank);
+		Coupon coupon = new Coupon();
+		member.coupons.add(coupon.getInstance(1, 0.5, "最初の特典"));
+		member.coupons.add(coupon.getInstance(2, 0.25, "今月の特典"));
+		return member;
 	}
 
 	@Override
