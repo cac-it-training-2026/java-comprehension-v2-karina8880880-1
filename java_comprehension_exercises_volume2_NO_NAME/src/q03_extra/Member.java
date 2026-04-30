@@ -1,6 +1,9 @@
-package q02_advanced.question02;
+package q03_extra;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 class Member {
@@ -8,7 +11,7 @@ class Member {
 	private int id;
 	private String password;
 	private String name;
-	private int age;
+	private Date birthday;
 	private int rank;
 	private List<Coupon> coupons;
 
@@ -25,11 +28,11 @@ class Member {
 	 * @param age
 	 * @param rank
 	 */
-	public Member(int id, String password, String name, int age, int rank) {
+	public Member(int id, String password, String name, Date birthday, int rank) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.age = age;
+		this.birthday = birthday;
 		this.rank = rank;
 
 		List<Coupon> coupons = new ArrayList<Coupon>();
@@ -60,12 +63,12 @@ class Member {
 		this.password = password;
 	}
 
-	public int getAge() {
-		return age;
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	public int getRank() {
@@ -84,8 +87,17 @@ class Member {
 		this.coupons = coupons;
 	}
 
-	public static Member getInstance(int id, String password, String name, int age, int rank) {
-		Member member = new Member(id, password, name, age, rank);
+	public static Member getInstance(int id, String password, String name, String birthdayString) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date birthday = null;
+		try {
+			birthday = dateFormat.parse(birthdayString);
+		} catch (ParseException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		Member member = new Member(id, password, name, birthday, (int) (Math.random() * 30 + 1));
 		member.coupons.add(Coupon.getInstance(1, 0.5, "最初の特典"));
 		member.coupons.add(Coupon.getInstance(2, 0.25, "今月の特典"));
 		return member;
@@ -94,7 +106,7 @@ class Member {
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", rank=" + rank
-				+ ", coupons=[" + coupons.toString() + "]]";
+				+ ", coupons=" + coupons.toString() + "]";
 	}
 
 	public void showMember() {
