@@ -1,0 +1,118 @@
+package q02_advanced.question02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Member {
+	//TODO ここから実装する
+	private int id;
+	private String password;
+	private String name;
+	private int age;
+	private int rank;
+	private List<Coupon> coupons;
+
+	/**
+	 * 
+	 */
+	public Member() {
+	}
+
+	/**
+	 * @param id
+	 * @param password
+	 * @param name
+	 * @param age
+	 * @param rank
+	 */
+	public Member(int id, String password, String name, int age, int rank) {
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.age = age;
+		this.rank = rank;
+
+		List<Coupon> coupons = new ArrayList<Coupon>();
+		this.coupons = coupons;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	public List<Coupon> getCoupons() {
+		return coupons;
+	}
+
+	public void setCoupons(List<Coupon> coupons) {
+		this.coupons = coupons;
+	}
+
+	/**
+	 * @param id
+	 * @param password
+	 * @param name
+	 * @param age
+	 * @param rank
+	 * @return
+	 */
+	public static Member getInstance(int id, String password, String name, int age, int rank) {
+		Member member = new Member(id, password, name, age, rank);
+		member.coupons.add(Coupon.getInstance(1, 0.5, "最初の特典"));
+		member.coupons.add(Coupon.getInstance(2, 0.25, "今月の特典"));
+		return member;
+	}
+
+	/**
+	 * MemberクラスでのtoStringの振る舞いをオーバーライド
+	 */
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", rank=" + rank
+				+ ", coupons=" + coupons.toString() + "]";
+	}
+
+	/**
+	 * MemberManagerの全表示関数用
+	 */
+	public void showMember() {
+		System.out.println(toString());
+	}
+
+}

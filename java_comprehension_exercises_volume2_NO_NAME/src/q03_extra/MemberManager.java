@@ -1,4 +1,6 @@
-package q01_basic.question04;
+package q03_extra;
+
+import java.util.List;
 
 class MemberManager {
 
@@ -9,9 +11,10 @@ class MemberManager {
 	}
 
 	//TODO showAllMembersメソッドを実装する
-	public static void showAllMembers(Member[] members) {
+	public static void showAllMembers(List<Member> members, int id) {
 		for (Member member : members) {
-			member.showMember();
+			if (member.getId() == id)
+				member.showMember();
 		}
 	}
 
