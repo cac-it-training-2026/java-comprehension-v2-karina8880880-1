@@ -46,12 +46,21 @@ public class Coupon {
 		this.description = description;
 	}
 
+	/**
+	 * @param id
+	 * @param discountRate
+	 * @param description
+	 * @return
+	 */
 	public static Coupon getInstance(int id, double discountRate, String description) {
 		Coupon coupon = new Coupon(id, discountRate, description);
 		return coupon;
 
 	}
 
+	/**
+	 * MemberクラスのtoStringで呼び出されている
+	 */
 	@Override
 	public String toString() {
 		return "Coupon [id=" + id + ", discountRate=" + discountRate + ", description=" + description + "]";

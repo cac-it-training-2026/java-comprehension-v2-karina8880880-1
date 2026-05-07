@@ -84,6 +84,14 @@ class Member {
 		this.coupons = coupons;
 	}
 
+	/**
+	 * @param id
+	 * @param password
+	 * @param name
+	 * @param age
+	 * @param rank
+	 * @return
+	 */
 	public static Member getInstance(int id, String password, String name, int age, int rank) {
 		Member member = new Member(id, password, name, age, rank);
 		member.coupons.add(Coupon.getInstance(1, 0.5, "最初の特典"));
@@ -91,12 +99,18 @@ class Member {
 		return member;
 	}
 
+	/**
+	 * MemberクラスでのtoStringの振る舞いをオーバーライド
+	 */
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", rank=" + rank
-				+ ", coupons=[" + coupons.toString() + "]]";
+				+ ", coupons=" + coupons.toString() + "]";
 	}
 
+	/**
+	 * MemberManagerの全表示関数用
+	 */
 	public void showMember() {
 		System.out.println(toString());
 	}

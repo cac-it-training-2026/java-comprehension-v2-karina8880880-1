@@ -86,9 +86,8 @@ class Member {
 
 	public static Member getInstance(int id, String password, String name, int age, int rank) {
 		Member member = new Member(id, password, name, age, rank);
-		Coupon coupon = new Coupon();
-		member.coupons.add(coupon.getInstance(1, 0.5, "最初の特典"));
-		member.coupons.add(coupon.getInstance(2, 0.25, "今月の特典"));
+		member.coupons.add(Coupon.getInstance(1, 0.5, "最初の特典"));
+		member.coupons.add(Coupon.getInstance(2, 0.25, "今月の特典"));
 		return member;
 	}
 
